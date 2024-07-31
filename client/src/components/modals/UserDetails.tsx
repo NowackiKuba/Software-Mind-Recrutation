@@ -9,9 +9,10 @@ interface Props {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   id: number;
+  setUsers: Dispatch<SetStateAction<TUser[]>>;
 }
 
-const UserDetails = ({ open, setOpen, id }: Props) => {
+const UserDetails = ({ open, setOpen, id, setUsers }: Props) => {
   const [user, setUser] = useState<TUser | null>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const UserDetails = ({ open, setOpen, id }: Props) => {
   const handleDeleteUser = async () => {
     try {
       setIsLoading(true);
-      const res = await axios(`http://localhost:8080/api/form/${id}`, {
+      await axios(`http://localhost:8080/api/form/${id}`, {
         method: 'DELETE',
       });
 
@@ -36,8 +37,8 @@ const UserDetails = ({ open, setOpen, id }: Props) => {
         description: 'Użytkownik został usunięty',
         duration: 2,
       });
-
-      return res;
+      setOpen(false);
+      setUsers((prev) => prev.filter((user) => user.id !== id));
     } catch (error) {
       notification.error({
         message: 'Coś poszło nie tak!',
@@ -45,7 +46,7 @@ const UserDetails = ({ open, setOpen, id }: Props) => {
           'Nie udało się usunąć użytkownika. Spróbuj ponownie później.',
         duration: 2,
       });
-      console.log(error);
+      return;
     } finally {
       setIsLoading(false);
     }

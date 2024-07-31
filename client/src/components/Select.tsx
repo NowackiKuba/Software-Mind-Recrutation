@@ -18,7 +18,7 @@ const Select = React.forwardRef<
   ) => {
     return (
       <select
-        className={`${className} w-full px-4 bg-white py-1 hover:border-blue-400 duration-150 ease-linear placeholder:text-gray-400 rounded-md border border-border`}
+        className={`${className} text-sm  w-full px-4 bg-white py-1 hover:border-blue-400 duration-150 ease-linear placeholder:text-gray-400 rounded-md border border-border`}
         onChange={onChange}
         onBlur={onBlur}
         name={name}

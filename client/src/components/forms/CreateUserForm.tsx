@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import schema from '../../lib/validations/user.validation';
@@ -11,14 +11,34 @@ import { notification } from 'antd';
 import { LuLoader2 } from 'react-icons/lu';
 import axios from 'axios';
 import Select from '../Select';
-import SelectItem from '../SelectItem';
+import { TUser } from '../../types';
 
-const CreateUserForm = () => {
+const CreateUserForm = ({
+  isLargeFont,
+  setIsLargeFont,
+  setUsers,
+}: {
+  isLargeFont: boolean;
+  setIsLargeFont: Dispatch<SetStateAction<boolean>>;
+  setUsers: Dispatch<SetStateAction<TUser[]>>;
+}) => {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
   });
 
   const [continents, setContinets] = useState<string[]>([]);
+  const dateOfBirth = form.watch('date_of_birth');
+  useEffect(() => {
+    if (dateOfBirth) {
+      const birthDate = new Date(dateOfBirth);
+      const age = new Date().getFullYear() - birthDate.getFullYear();
+      if (age > 60) {
+        setIsLargeFont(true);
+      } else {
+        setIsLargeFont(false);
+      }
+    }
+  }, [dateOfBirth]);
 
   useEffect(() => {
     const fetchContinents = async () => {
@@ -42,12 +62,12 @@ const CreateUserForm = () => {
           continent: values.continent,
         },
       });
+      setUsers((prev) => [...prev, res.data.user]);
       notification.success({
         message: 'Sukces',
         description: 'Użytkownik został utworzony',
         duration: 2,
       });
-      window.location.reload();
     } catch (error) {
       alert('Wystąpił błąd');
     } finally {
@@ -60,41 +80,61 @@ const CreateUserForm = () => {
       onSubmit={form.handleSubmit(onSubmit)}
     >
       <div className='flex flex-col gap-0.5 w-full'>
-        <Label>Kontynent</Label>
+        <Label className={`${isLargeFont ? 'text-base' : ''}`}>Kontynent</Label>
         <Select
           {...form.register('continent')}
           options={continents.map((continent) => {
             return { value: continent, label: continent };
           })}
+          className={`${
+            form.formState.errors.continent ? 'border-red-500' : ''
+          }`}
         />
         {form.formState.errors.continent && (
-          <p className='text-red-500'>
+          <p className='text-sm font-semibold text-red-500 '>
             {form.formState.errors.continent.message}
           </p>
         )}
       </div>
       <div className='flex flex-col gap-0.5 w-full'>
-        <Label>Imię</Label>
-        <Input {...form.register('first_name')} />
+        <Label className={`${isLargeFont ? 'text-base' : ''}`}>Imię</Label>
+        <Input
+          className={`${
+            form.formState.errors.first_name ? 'border-red-500' : ''
+          }`}
+          {...form.register('first_name')}
+        />
         {form.formState.errors.first_name && (
-          <p className='text-red-500'>
+          <p className='text-sm font-semibold text-red-500'>
             {form.formState.errors.first_name.message}
           </p>
         )}
       </div>
       <div className='flex flex-col gap-0.5 w-full'>
-        <Label>Nazwisko</Label>
-        <Input {...form.register('last_name')} />
+        <Label className={`${isLargeFont ? 'text-base' : ''}`}>Nazwisko</Label>
+        <Input
+          className={`${
+            form.formState.errors.last_name ? 'border-red-500' : ''
+          }`}
+          {...form.register('last_name')}
+        />
         {form.formState.errors.date_of_birth && (
-          <p className='text-red-500'>
+          <p className='text-sm font-semibold text-red-500'>
             {form.formState.errors.date_of_birth?.message}
           </p>
         )}
       </div>
       <div className='flex flex-col gap-0.5 w-full'>
-        <Label>Data Urodzenia</Label>
+        <Label className={`${isLargeFont ? 'text-base' : ''}`}>
+          Data Urodzenia
+        </Label>
         <DatePicker
-          onChange={(e) => form.setValue('date_of_birth', e.toDate())}
+          className={`${
+            form.formState.errors.date_of_birth ? 'border-red-500' : ''
+          }`}
+          onChange={(e) =>
+            form.setValue('date_of_birth', e ? e.toDate() : new Date())
+          }
         />
       </div>
       <Button
@@ -103,7 +143,6 @@ const CreateUserForm = () => {
         }}
         disabled={
           isLoading ||
-          !form.formState.isValid ||
           (form.getValues().date_of_birth &&
             form.getValues().date_of_birth! > new Date())
         }

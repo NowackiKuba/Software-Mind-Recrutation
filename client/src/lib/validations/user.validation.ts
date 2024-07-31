@@ -2,7 +2,7 @@ import * as z from 'zod';
 
 const schema = z
   .object({
-    first_name: z.string().nonempty({ message: 'Imię jest wymagane' }),
+    first_name: z.string().nonempty({ message: 'To pole jest wymagane' }),
     last_name: z.string().optional(),
     continent: z.string().optional(),
     date_of_birth: z.date().optional(),

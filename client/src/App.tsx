@@ -8,6 +8,7 @@ import UserDetails from './components/modals/UserDetails';
 import { format } from 'date-fns';
 
 function App() {
+  const [isLargeFont, setIsLargeFont] = useState<boolean>(false);
   const [users, setUsers] = useState<TUser[]>([]);
   const [isOpenDetails, setIsOpenDetails] = useState<boolean>(false);
   const [selectedUserId, setSelectedUserId] = useState<number>();
@@ -50,9 +51,11 @@ function App() {
     fetchUsers();
   }, []);
   return (
-    <div className='flex items-center justify-start w-full h-screen gap-8 bg-background'>
-      <div className='px-8 py-20 flex flex-col gap-4 w-[75%] h-full'>
-        <p className='text-3xl font-semibold '>Użytkownicy</p>
+    <div className='flex flex-col items-center justify-start w-full h-screen gap-4 px-2 py-20 sm:px-4 md:px-8 md:gap-8 md:flex-row bg-background'>
+      <div className='px-4 flex flex-col gap-4 w-full md:w-[75%] h-full'>
+        <p className={`${isLargeFont ? 'text-4xl' : 'text-3xl'} font-semibold`}>
+          Użytkownicy
+        </p>
         <div className='w-full'></div>
         <Table
           columns={columns}
@@ -75,19 +78,30 @@ function App() {
             };
           }}
           className='border rounded-lg shadow-md border-border'
+          rowClassName={`cursor-pointer ${isLargeFont ? 'text-lg' : ''}`}
+          rootClassName={`${isLargeFont ? 'text-lg' : ''} p-0`}
         />
       </div>
-      <div className='w-[35%] flex flex-col py-20  h-full px-8'>
+      <div className='md:w-[35%] w-full flex flex-col  h-full'>
         <div className='flex flex-col items-center justify-start w-full gap-8 px-8 py-8 pt-12 bg-white border border-l shadow-md border-border rounded-xl'>
-          <p className='text-xl font-semibold'>Stwórz Konto Użytkownika</p>
+          <p
+            className={`${isLargeFont ? 'text-2xl' : 'text-xl'} font-semibold`}
+          >
+            Stwórz Konto Użytkownika
+          </p>
 
-          <CreateUserForm />
+          <CreateUserForm
+            isLargeFont={isLargeFont}
+            setIsLargeFont={setIsLargeFont}
+            setUsers={setUsers}
+          />
         </div>
       </div>
       <UserDetails
         open={isOpenDetails}
         setOpen={setIsOpenDetails}
         id={selectedUserId!}
+        setUsers={setUsers}
       />
     </div>
   );
