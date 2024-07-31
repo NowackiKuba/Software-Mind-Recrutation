@@ -47,6 +47,7 @@ const CreateUserForm = () => {
         description: 'Użytkownik został utworzony',
         duration: 2,
       });
+      window.location.reload();
     } catch (error) {
       alert('Wystąpił błąd');
     } finally {
@@ -61,7 +62,7 @@ const CreateUserForm = () => {
       <div className='flex flex-col gap-0.5 w-full'>
         <Label>Kontynent</Label>
         <Select
-          {...form.register('date_of_birth')}
+          {...form.register('continent')}
           options={continents.map((continent) => {
             return { value: continent, label: continent };
           })}
