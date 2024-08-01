@@ -129,7 +129,8 @@ const CreateUserForm = ({
           Data Urodzenia
         </Label>
         <DatePicker
-          className={`${
+          placeholder='Wybierz datę'
+          className={`md:py-1 py-2.5 ${
             form.formState.errors.date_of_birth ? 'border-red-500' : ''
           }`}
           onChange={(e) =>

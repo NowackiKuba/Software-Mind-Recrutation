@@ -51,8 +51,8 @@ function App() {
     fetchUsers();
   }, []);
   return (
-    <div className='flex flex-col items-center justify-start w-full h-screen gap-4 px-2 py-20 sm:px-4 md:px-8 md:gap-8 md:flex-row bg-background'>
-      <div className='px-4 flex flex-col gap-4 w-full md:w-[75%] h-full'>
+    <div className='flex flex-col items-center justify-start w-full h-screen gap-4 px-2 pt-6 sm:pt-10 sm:py-20 sm:px-4 md:px-8 md:gap-8 lg:flex-row bg-background'>
+      <div className='px-4 flex flex-col gap-4 w-full lg:w-[75%] h-full'>
         <p className={`${isLargeFont ? 'text-4xl' : 'text-3xl'} font-semibold`}>
           Użytkownicy
         </p>
@@ -80,9 +80,15 @@ function App() {
           className='border rounded-lg shadow-md border-border'
           rowClassName={`cursor-pointer ${isLargeFont ? 'text-lg' : ''}`}
           rootClassName={`${isLargeFont ? 'text-lg' : ''} p-0`}
+          pagination={{
+            pageSize: 5,
+          }}
+          locale={{
+            emptyText: 'Brak danych',
+          }}
         />
       </div>
-      <div className='md:w-[35%] w-full flex flex-col  h-full'>
+      <div className='lg:w-[35%] sm:flex w-full hidden flex-col px-3 h-full'>
         <div className='flex flex-col items-center justify-start w-full gap-8 px-8 py-8 pt-12 bg-white border border-l shadow-md border-border rounded-xl'>
           <p
             className={`${isLargeFont ? 'text-2xl' : 'text-xl'} font-semibold`}

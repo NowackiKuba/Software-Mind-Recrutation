@@ -21,7 +21,7 @@ const Input = React.forwardRef(
   ) => {
     return (
       <input
-        className={`${className} w-full text-sm px-4 bg-white py-1 hover:border-blue-400 duration-150 ease-linear placeholder:text-gray-400 rounded-md border border-border`}
+        className={`${className} text-sm  w-full focus:ring-0 focus:outline-none focus-visible:outline-none focus:ring-offset-0 focus-visible:border-blue-400 px-4 focus:shadow-blue-300 focus-visible:ring-0 focus-visible:ring-offset-0  bg-white py-2.5  md:py-1 hover:border-blue-400 duration-150 ease-linear placeholder:text-gray-400 rounded-md border border-border`}
         onChange={onChange}
         onBlur={onBlur}
         name={name}
