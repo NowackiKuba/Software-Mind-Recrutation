@@ -56,8 +56,8 @@ Make sure you have the following installed:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository/client
+   git clone https://github.com/NowackiKuba/Software-Mind-Recrutation.git
+   cd Software-Mind-Recrutation/client
 
 2. Install NPM packages
   ``` npm install ```
