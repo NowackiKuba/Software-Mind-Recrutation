@@ -35,13 +35,13 @@ Key functionalities include:
 
 ### Front-end
 - [React](https://reactjs.org/)
-- [AntDesign]([https://ant.design/])
+- [AntDesign](https://ant.design/)
 - [Axios](https://github.com/axios/axios)
 
 ### Back-end
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
-- [Sequelize SQLite] ([https://sequelize.org/])
+- [Sequelize SQLite](https://sequelize.org/)
 
 ## Installation
 
