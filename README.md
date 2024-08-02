@@ -60,18 +60,18 @@ Make sure you have the following installed:
    cd your-repository/client
 
 2. Install NPM packages
-  ```sh npm install
+  ``` npm install ```
 
 3. Start React App
-   ```sh npm start
+   ```npm start```
 
 ### Back-end
 
 1. Navigate to the backend directory
-   ```sh cd ../server
+   ```cd ../server```
 
 2. Install NPM packages
-   ```sh npm install
+   ```npm install```
 
 3. Start the server
-   ```sh npm start
+   ```npm start```
