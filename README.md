@@ -1,8 +1,3 @@
-# Project Name
-
-[![License: MIT] (https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js CI] (https://github.com/NowackiKuba/Software-Mind-Recrutation/workflows/Node.js%20CI/badge.svg)](https://github.com/your-username/your-repository/actions)
-
 ## Table of Contents
 
 - [About the Project](#about-the-project)
@@ -25,11 +20,6 @@ Key functionalities include:
 - Creating new users
 - Editing and deleting existing users
 
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
 
 ## Technologies Used
 
