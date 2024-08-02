@@ -1,7 +1,7 @@
 # Project Name
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js CI](https://github.com/your-username/your-repository/workflows/Node.js%20CI/badge.svg)](https://github.com/your-username/your-repository/actions)
+[![License: MIT] (https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js CI] (https://github.com/NowackiKuba/Software-Mind-Recrutation/workflows/Node.js%20CI/badge.svg)](https://github.com/your-username/your-repository/actions)
 
 ## Table of Contents
 
@@ -17,7 +17,13 @@
 
 ## About the Project
 
-A brief description of your project, what it does, and its purpose.
+
+This project is a React and Node.js application designed for recruitment purposes. It allows you to view all users, create new users, and manage existing users. The application features a user-friendly interface built with React, while the back-end server is powered by Node.js and Express. The data is stored in a SQLite DB with help of sequelize ORM.
+
+Key functionalities include:
+- Viewing a list of all users
+- Creating new users
+- Editing and deleting existing users
 
 ## Features
 
@@ -29,13 +35,13 @@ A brief description of your project, what it does, and its purpose.
 
 ### Front-end
 - [React](https://reactjs.org/)
-- [React Router](https://reactrouter.com/)
+- [AntDesign](https://reactrouter.com/](https://ant.design/)
 - [Axios](https://github.com/axios/axios)
 
 ### Back-end
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/) (or any database you are using)
+- [Sequelize SQLite](https://www.mongodb.com/](https://sequelize.org/)
 
 ## Installation
 
@@ -45,28 +51,27 @@ Make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [MongoDB](https://www.mongodb.com/) (or any other database)
 
 ### Front-end
 
 1. Clone the repo
    ```sh
    git clone https://github.com/your-username/your-repository.git
-   cd your-repository/client sh```
+   cd your-repository/client ```
 
 2. Install NPM packages
-  ```sh npm install sh```
+  ``` npm install ```
 
 3. Start React App
-   ```sh npm start sh```
+   ```sh npm start ```
 
 ### Back-end
 
 1. Navigate to the backend directory
-   ```sh cd ../server sh```
+   ```sh cd ../server ```
 
 2. Install NPM packages
-   ```sh npm install sh```
+   ```sh npm install ```
 
 3. Start the server
-   ``` sh npm start sh```
+   ``` sh npm start ```
