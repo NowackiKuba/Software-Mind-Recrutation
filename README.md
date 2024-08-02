@@ -57,21 +57,21 @@ Make sure you have the following installed:
 1. Clone the repo
    ```sh
    git clone https://github.com/your-username/your-repository.git
-   cd your-repository/client ```
+   cd your-repository/client
 
 2. Install NPM packages
-  ``` npm install ```
+  ```sh npm install
 
 3. Start React App
-   ```sh npm start ```
+   ```sh npm start
 
 ### Back-end
 
 1. Navigate to the backend directory
-   ```sh cd ../server ```
+   ```sh cd ../server
 
 2. Install NPM packages
-   ```sh npm install ```
+   ```sh npm install
 
 3. Start the server
-   ``` sh npm start ```
+   ```sh npm start
